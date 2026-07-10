@@ -8,7 +8,7 @@ export {page} from './page'
 export {pageType} from './pageType'
 export {menuItem, navigationMenu} from './navigationMenu'
 export {menuType} from './menuType'
-export {siteSettings} from './siteSettings'
+
 export {siteDetail} from './siteDetail'
 export {social} from './social'
 export {sectionTypes} from './sections'
@@ -18,7 +18,7 @@ import {page} from './page'
 import {pageType} from './pageType'
 import {menuItem, navigationMenu} from './navigationMenu'
 import {menuType} from './menuType'
-import {siteSettings} from './siteSettings'
+
 import {siteDetail} from './siteDetail'
 import {social} from './social'
 import {sectionTypes} from './sections'
@@ -30,7 +30,7 @@ export const schemaTypes = [
   pageType,
   navigationMenu,
   menuType,
-  siteSettings,
+
   siteDetail,
   social,
   form,
