@@ -28,7 +28,6 @@ export const menuItem = defineType({
       options: {
         list: [
           {title: 'Page', value: 'page'},
-          {title: 'Blog', value: 'blog'},
           {title: 'External URL', value: 'external'},
         ],
       },
@@ -40,13 +39,7 @@ export const menuItem = defineType({
       to: [{type: 'page'}],
       hidden: ({parent}) => (parent as {linkType?: string})?.linkType !== 'page',
     }),
-    defineField({
-      name: 'blog',
-      title: 'Blog Post',
-      type: 'reference',
-      to: [{type: 'blog'}],
-      hidden: ({parent}) => (parent as {linkType?: string})?.linkType !== 'blog',
-    }),
+
     defineField({
       name: 'externalLink',
       title: 'External URL',
@@ -91,7 +84,6 @@ export const menuItem = defineType({
               options: {
                 list: [
                   {title: 'Page', value: 'page'},
-                  {title: 'Blog', value: 'blog'},
                   {title: 'External URL', value: 'external'},
                 ],
               },
@@ -102,12 +94,7 @@ export const menuItem = defineType({
               title: 'Page',
               to: [{type: 'page'}],
             }),
-            defineField({
-              name: 'blog',
-              type: 'reference',
-              title: 'Blog Post',
-              to: [{type: 'blog'}],
-            }),
+
             defineField({
               name: 'externalLink',
               type: 'string',
