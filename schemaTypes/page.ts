@@ -54,6 +54,7 @@ export const page = defineType({
       title: 'Page Sections',
       type: 'array',
       of: [
+        {type: 'hero'},
         {type: 'heroSlider'},
         {type: 'clinicsGrid'},
         {type: 'facilitiesGrid'},

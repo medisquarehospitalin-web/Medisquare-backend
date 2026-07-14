@@ -112,6 +112,29 @@ export const heroSlider = defineType({
         },
       ],
     }),
+    defineField({
+      name: 'specialties',
+      title: 'Specialties Grid',
+      type: 'array',
+      description: 'Quick links to specialties shown in the floating grid',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            defineField({name: 'name', title: 'Name', type: 'string'}),
+            defineField({name: 'icon', title: 'Icon (e.g. Shield, Brain, Activity, Heart)', type: 'string'}),
+            defineField({name: 'link', title: 'Link (e.g. /oncology or sec-clinics-grid)', type: 'string'}),
+          ],
+        },
+      ],
+    }),
+    defineField({
+      name: 'highlights',
+      title: 'Bottom Highlights',
+      type: 'array',
+      description: 'Checkmark highlights shown in the bottom bar',
+      of: [{type: 'string'}],
+    }),
   ],
   preview: {
     select: {
@@ -410,6 +433,7 @@ export const comingSoon = defineType({
   fields: [
     defineField({name: 'title', title: 'Title', type: 'string'}),
     defineField({name: 'titleHighlight', title: 'Title Highlight', type: 'string'}),
+    defineField({name: 'description', title: 'Description', type: 'text', rows: 3}),
   ],
   preview: {
     select: {title: 'title', titleHighlight: 'titleHighlight'},
@@ -448,7 +472,32 @@ export const doctorProfile = defineType({
       name: 'qualifications',
       title: 'Qualifications',
       type: 'array',
-      of: [{type: 'string'}],
+      of: [
+        {
+          type: 'object',
+          name: 'qualification',
+          title: 'Qualification',
+          fields: [
+            defineField({name: 'degree', title: 'Degree', type: 'string'}),
+            defineField({name: 'specialization', title: 'Specialization', type: 'string'}),
+            defineField({name: 'university', title: 'University / College / Institution', type: 'string'}),
+          ],
+          preview: {
+            select: {
+              degree: 'degree',
+              specialization: 'specialization',
+              university: 'university',
+            },
+            prepare({degree, specialization, university}) {
+              const subtitle = [specialization, university].filter(Boolean).join(' - ')
+              return {
+                title: degree || 'Untitled Qualification',
+                subtitle: subtitle || undefined,
+              }
+            },
+          },
+        },
+      ],
     }),
     defineField({
       name: 'awards',
@@ -567,7 +616,25 @@ export const conditionsList = defineType({
   },
 })
 
+export const hero = defineType({
+  name: 'hero',
+  title: 'Inner Page Hero',
+  type: 'object',
+  fields: [
+    defineField({name: 'title', title: 'Title', type: 'string'}),
+    defineField({name: 'breadcrumbText', title: 'Breadcrumb Text', type: 'string', description: 'e.g. HOME > CLINICS > MEDICAL ONCOLOGY'}),
+    defineField({name: 'backgroundImage', title: 'Background Image Path', type: 'string', description: 'e.g. /assets/img/carou_lobby.jpg'}),
+  ],
+  preview: {
+    select: {title: 'title', breadcrumbText: 'breadcrumbText'},
+    prepare({title, breadcrumbText}) {
+      return {title: 'Inner Page Hero', subtitle: title || breadcrumbText}
+    },
+  },
+})
+
 const rawSectionTypes = [
+  hero,
   heroSlider,
   clinicsGrid,
   facilitiesGrid,
