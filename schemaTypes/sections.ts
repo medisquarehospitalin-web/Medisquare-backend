@@ -167,7 +167,13 @@ export const clinicsGrid = defineType({
           fields: [
             defineField({name: 'title', title: 'Title', type: 'string'}),
             defineField({name: 'description', title: 'Description', type: 'text', rows: 3}),
-            defineField({name: 'icon', title: 'Icon (Path/SVG)', type: 'string'}),
+            defineField({
+              name: 'icon',
+              title: 'Icon (Image/SVG)',
+              type: 'image',
+              options: {hotspot: true},
+              fields: [defineField({name: 'altText', title: 'Alt Text', type: 'string'})],
+            }),
             defineField({name: 'link', title: 'Link (URL)', type: 'string'}),
           ],
         },
@@ -199,7 +205,13 @@ export const facilitiesGrid = defineType({
           type: 'object',
           fields: [
             defineField({name: 'title', title: 'Title', type: 'string'}),
-            defineField({name: 'icon', title: 'Icon (Path/SVG)', type: 'string'}),
+            defineField({
+              name: 'icon',
+              title: 'Icon (Image/SVG)',
+              type: 'image',
+              options: {hotspot: true},
+              fields: [defineField({name: 'altText', title: 'Alt Text', type: 'string'})],
+            }),
           ],
         },
       ],
@@ -356,7 +368,13 @@ export const clinicFacilities = defineType({
           fields: [
             defineField({name: 'id', title: 'ID', type: 'string'}),
             defineField({name: 'title', title: 'Title', type: 'string'}),
-            defineField({name: 'icon', title: 'Icon (Path/SVG)', type: 'string'}),
+            defineField({
+              name: 'icon',
+              title: 'Icon (Image/SVG)',
+              type: 'image',
+              options: {hotspot: true},
+              fields: [defineField({name: 'altText', title: 'Alt Text', type: 'string'})],
+            }),
             defineField({
               name: 'modalContent',
               title: 'Modal Content',
@@ -623,7 +641,13 @@ export const hero = defineType({
   fields: [
     defineField({name: 'title', title: 'Title', type: 'string'}),
     defineField({name: 'breadcrumbText', title: 'Breadcrumb Text', type: 'string', description: 'e.g. HOME > CLINICS > MEDICAL ONCOLOGY'}),
-    defineField({name: 'backgroundImage', title: 'Background Image Path', type: 'string', description: 'e.g. /assets/img/carou_lobby.jpg'}),
+    defineField({
+      name: 'backgroundImage',
+      title: 'Background Image',
+      type: 'image',
+      options: {hotspot: true},
+      fields: [defineField({name: 'altText', title: 'Alt Text', type: 'string'})],
+    }),
   ],
   preview: {
     select: {title: 'title', breadcrumbText: 'breadcrumbText'},
