@@ -27,7 +27,9 @@ export const teamGrid = defineType({
             }),
             defineField({name: 'bio', title: 'Bio', type: 'text', rows: 3}),
             defineField({name: 'ishighlight', title: 'Highlight Member', type: 'boolean'}),
-            defineField({name: 'link', title: 'Link', type: 'string'}),
+            defineField({name: 'link', title: 'Link (Full Profile Link)', type: 'string'}),
+            defineField({name: 'webUrl', title: 'Website URL (e.g. https://cancerimpact.org)', type: 'string'}),
+            defineField({name: 'webName', title: 'Website Display Name / Label (e.g. cancerimpact)', type: 'string'}),
             defineField({name: 'facebook', title: 'Facebook URL', type: 'string'}),
             defineField({name: 'twitter', title: 'Twitter URL', type: 'string'}),
             defineField({name: 'instagram', title: 'Instagram URL', type: 'string'}),
@@ -675,7 +677,7 @@ const rawSectionTypes = [
 ]
 
 // Prepend the hideSection field to each section type dynamically for easy toggle in Sanity Studio
-rawSectionTypes.forEach((section) => {
+rawSectionTypes.forEach((section: any) => {
   if (section.fields) {
     section.fields.unshift(
       defineField({
@@ -689,3 +691,4 @@ rawSectionTypes.forEach((section) => {
 })
 
 export const sectionTypes = rawSectionTypes
+
